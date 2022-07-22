@@ -11,3 +11,13 @@ spring:
     hibernate.ddl-auto: "update"
     repositories.enabled: "true"
     defer-datasource-initialization: "true"
+management:
+  endpoint:
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: metrics,info,health,prometheus

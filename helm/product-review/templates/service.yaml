@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "product-review.fullname" . }}
+  labels:
+    {{- include "product-review.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: 8081
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "product-review.selectorLabels" . | nindent 4 }}
